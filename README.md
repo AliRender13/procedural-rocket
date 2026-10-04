@@ -1,8 +1,11 @@
 # procedural-rocket
 
+
 Build **multi-stage launch vehicles** and **fly them** — in **pure Python**, no dependencies.
 
+
 ## What it does
+
 
 1. **Stack a rocket** (`stages.py`): pile up stages and strap on side
    boosters, each with its own thrust, burn time, dry/fuel mass and ISP.
@@ -15,7 +18,9 @@ Build **multi-stage launch vehicles** and **fly them** — in **pure Python**, n
 3. **The classic** (`rocket.py`): the original single-rocket OBJ generator —
    still works exactly as before.
 
+
 ## Run it
+
 
 ```bash
 python3 stages.py   # build the Aurora-9 demo rocket -> aurora9.obj
@@ -23,10 +28,13 @@ python3 launch.py   # fly it -> mission control readout
 python3 rocket.py   # original single-rocket generator -> rocket.obj
 ```
 
+
 ## The demo mission: Aurora-9
+
 
 2 stages + 2 side boosters, 836,500 kg on the pad, 12,000 kN of thrust
 (liftoff TWR 1.46):
+
 
 ```
   EVENT LOG
@@ -38,11 +46,14 @@ python3 rocket.py   # original single-rocket generator -> rocket.obj
     T+ 614.0s  APOGEE             alt   590.2 km
 ```
 
+
 Plus a per-stage summary (propellant used, delta-v via Tsiolkovsky, max
 TWR) and ASCII plots of altitude-vs-time and velocity-vs-time, with every
 event marked on the curve.
 
+
 ## How it works
+
 
 - **Builder**: each stage/booster is a spec object (`thrust_kn`, `burn_s`,
   `dry_kg`, `fuel_kg`, `isp_s` …). The mesh builder stacks cylinders ring
@@ -53,11 +64,19 @@ event marked on the curve.
   exponential atmosphere; gravity weakens with altitude. Events fire when
   the timeline crosses them; max-Q is tracked every step.
 
+
 ## Try changing
+
 
 - Give the boosters more burn time, or add a third stage — watch the
   apogee move.
 - Steepen the pitch program in `pitch_from_vertical()` and see max-Q climb.
 - Design your own rocket with `Rocket` / `Stage` / `Booster` and fly it.
 
+
 Built by [Mohammad Ali](https://github.com/AliRender13).
+
+
+## In the wild
+
+- 🎬 [Code walkthrough video](https://www.linkedin.com/feed/update/urn:li:activity:7512386202050826241/) — LinkedIn post covering the multi-stage Aurora-9 builder and the launch simulator
